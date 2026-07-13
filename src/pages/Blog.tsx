@@ -1,5 +1,5 @@
 import { Link } from "react-router-dom";
-import { ArrowRight } from "lucide-react";
+import { ArrowRight, ImageIcon } from "lucide-react";
 import { useState, useEffect } from "react";
 import { fetchBlogPosts } from "../api";
 import { useTranslation } from "../i18n/LanguageContext";
@@ -46,11 +46,13 @@ export default function Blog() {
                 className="bg-white rounded-2xl overflow-hidden shadow-sm hover:shadow-md transition-shadow group"
               >
                 <div className="aspect-[16/9] bg-gray-100">
-                  <img
-                    src={post.coverImage}
-                    alt={post.title}
-                    className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
-                  />
+                  {post.coverImage ? (
+                    <img src={post.coverImage} alt={post.title} className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" />
+                  ) : (
+                    <div className="w-full h-full flex items-center justify-center">
+                      <ImageIcon className="w-12 h-12 text-gray-300" />
+                    </div>
+                  )}
                 </div>
                 <div className="p-4">
                   <p className="text-xs text-gray-400 mb-2">

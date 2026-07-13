@@ -1,5 +1,5 @@
 import { Link } from "react-router-dom";
-import { ShoppingCart, Trash2, ArrowLeft, ArrowRight } from "lucide-react";
+import { ShoppingCart, Trash2, ArrowLeft, ArrowRight, ImageIcon } from "lucide-react";
 import { useCartStore } from "../store/cartStore";
 import { useTranslation } from "../i18n/LanguageContext";
 
@@ -43,11 +43,13 @@ export default function Cart() {
               className="bg-white rounded-2xl p-4 flex items-center gap-4 shadow-sm"
             >
               <div className="w-20 h-20 rounded-xl overflow-hidden bg-gray-100 shrink-0">
-                <img
-                  src={item.image}
-                  alt={item.name}
-                  className="w-full h-full object-cover"
-                />
+                {item.image ? (
+                  <img src={item.image} alt={item.name} className="w-full h-full object-cover" />
+                ) : (
+                  <div className="w-full h-full flex items-center justify-center">
+                    <ImageIcon className="w-6 h-6 text-gray-300" />
+                  </div>
+                )}
               </div>
               <div className="flex-1 min-w-0">
                 <h3 className="font-medium text-sm md:text-base text-gray-900 truncate">

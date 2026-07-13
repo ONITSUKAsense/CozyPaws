@@ -4,22 +4,20 @@ import {
   Play,
   ArrowRight,
   Plus,
+  ImageIcon,
 } from "lucide-react";
 
-const ASSETS = {
-  avatar:
-    "https://polo-pecan-73837341.figma.site/_assets/v11/e62173d41f91350a59628e8a9a55ae078a886fb9.png?w=128",
-  productCard:
-    "https://polo-pecan-73837341.figma.site/_assets/v11/3e5158dad63d392ade022e81890edc9f54d750bc.png",
-  videoCard:
-    "https://polo-pecan-73837341.figma.site/_assets/v11/76be6ec3a93a703b15e9cc01e764a4e3f9d7d2c0.png",
-  bottomLeft:
-    "https://polo-pecan-73837341.figma.site/_assets/v11/8d44b25186ef45a5789c74668fb781cea4e1ff49.png",
-  bottomCenter:
-    "https://polo-pecan-73837341.figma.site/_assets/v11/96745c4e72ad5c5208e53a885df797fd82cd854a.png?h=1024",
-  bottomRight:
-    "https://polo-pecan-73837341.figma.site/_assets/v11/81bd2e7a66b58f3d8f3ad78fd1ebf01af8dfdee1.png",
-} as const;
+const PLACEHOLDER_IMG = "";
+
+function ImgBox({ src, alt, className }: { src: string; alt: string; className?: string }) {
+  return src ? (
+    <img src={src} alt={alt} className={className} />
+  ) : (
+    <div className={`flex items-center justify-center bg-gray-100 ${className ?? ""}`}>
+      <ImageIcon className="w-1/3 h-1/3 text-gray-300" />
+    </div>
+  );
+}
 
 function HeadingWords() {
   return (
@@ -45,8 +43,8 @@ function LeftProductCard() {
         className="relative rounded-2xl overflow-hidden bg-gray-100"
         style={{ aspectRatio: "260/257" }}
       >
-        <img
-          src={ASSETS.productCard}
+        <ImgBox
+          src={PLACEHOLDER_IMG}
           alt="Cozy Cat House"
           className="w-full h-full object-cover"
         />
@@ -69,8 +67,8 @@ function RightVideoCard() {
         className="relative rounded-2xl overflow-hidden bg-gray-100"
         style={{ aspectRatio: "177/287" }}
       >
-        <img
-          src={ASSETS.videoCard}
+        <ImgBox
+          src={PLACEHOLDER_IMG}
           alt="Video review"
           className="w-full h-full object-cover"
         />
@@ -92,8 +90,8 @@ function BottomImages() {
         className="relative flex-1 overflow-hidden"
         style={{ maxHeight: "min(70vh, 55vw)" }}
       >
-        <img
-          src={ASSETS.bottomLeft}
+        <ImgBox
+          src={PLACEHOLDER_IMG}
           alt=""
           className="w-full h-auto block animate-photo-reveal delay-800"
         />
@@ -103,8 +101,8 @@ function BottomImages() {
         >
           <div className="flex items-center animate-scale-in delay-1000">
             <div className="flex -space-x-1.5">
-              <img
-                src={ASSETS.avatar}
+              <ImgBox
+                src={PLACEHOLDER_IMG}
                 alt=""
                 className="w-7 h-7 md:w-8 md:h-8 rounded-full border-2 border-white object-cover"
               />
@@ -123,8 +121,8 @@ function BottomImages() {
         className="relative flex-[1.3] overflow-hidden"
         style={{ maxHeight: "min(85vh, 70vw)" }}
       >
-        <img
-          src={ASSETS.bottomCenter}
+        <ImgBox
+          src={PLACEHOLDER_IMG}
           alt=""
           className="w-full h-auto block animate-photo-reveal delay-600"
         />
@@ -148,8 +146,8 @@ function BottomImages() {
         className="relative flex-1 overflow-hidden"
         style={{ maxHeight: "min(70vh, 55vw)" }}
       >
-        <img
-          src={ASSETS.bottomRight}
+        <ImgBox
+          src={PLACEHOLDER_IMG}
           alt=""
           className="w-full h-auto block animate-photo-reveal delay-900"
         />
@@ -201,8 +199,8 @@ function MobileLayout() {
 
       <div className="flex gap-3 px-4 mt-4 shrink-0">
         <div className="flex-1 aspect-square rounded-2xl overflow-hidden bg-gray-100 relative">
-          <img
-            src={ASSETS.productCard}
+          <ImgBox
+            src={PLACEHOLDER_IMG}
             alt="Cozy Cat House"
             className="w-full h-full object-cover"
           />
@@ -211,8 +209,8 @@ function MobileLayout() {
           </div>
         </div>
         <div className="flex-1 aspect-[3/4] rounded-2xl overflow-hidden bg-gray-100 relative">
-          <img
-            src={ASSETS.videoCard}
+          <ImgBox
+            src={PLACEHOLDER_IMG}
             alt="Video review"
             className="w-full h-full object-cover"
           />
@@ -225,8 +223,8 @@ function MobileLayout() {
       <div className="flex items-center justify-center gap-4 px-4 mt-3 shrink-0">
         <div className="flex items-center gap-2">
           <div className="flex -space-x-1">
-            <img
-              src={ASSETS.avatar}
+            <ImgBox
+              src={PLACEHOLDER_IMG}
               alt=""
               className="w-6 h-6 rounded-full border-2 border-white object-cover"
             />
@@ -245,22 +243,22 @@ function MobileLayout() {
 
       <div className="flex items-end flex-1 mt-2">
         <div className="flex-1 overflow-hidden">
-          <img
-            src={ASSETS.bottomLeft}
+          <ImgBox
+            src={PLACEHOLDER_IMG}
             alt=""
             className="w-full h-full object-cover"
           />
         </div>
         <div className="flex-[1.3] overflow-hidden">
-          <img
-            src={ASSETS.bottomCenter}
+          <ImgBox
+            src={PLACEHOLDER_IMG}
             alt=""
             className="w-full h-full object-cover"
           />
         </div>
         <div className="flex-1 overflow-hidden">
-          <img
-            src={ASSETS.bottomRight}
+          <ImgBox
+            src={PLACEHOLDER_IMG}
             alt=""
             className="w-full h-full object-cover"
           />

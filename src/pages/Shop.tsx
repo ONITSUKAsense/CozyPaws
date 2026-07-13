@@ -1,6 +1,6 @@
 import { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
-import { Search } from "lucide-react";
+import { Search, ImageIcon } from "lucide-react";
 import { fetchProducts, fetchCategories } from "../api";
 import { useTranslation } from "../i18n/LanguageContext";
 import type { Product, Category } from "../types";
@@ -123,11 +123,13 @@ export default function Shop() {
                 className="bg-white rounded-2xl overflow-hidden shadow-sm hover:shadow-md transition-shadow"
               >
                 <div className="aspect-square bg-gray-100">
-                  <img
-                    src={product.images[0]}
-                    alt={product.name}
-                    className="w-full h-full object-cover"
-                  />
+                  {product.images[0] ? (
+                    <img src={product.images[0]} alt={product.name} className="w-full h-full object-cover" />
+                  ) : (
+                    <div className="w-full h-full flex items-center justify-center">
+                      <ImageIcon className="w-10 h-10 text-gray-300" />
+                    </div>
+                  )}
                 </div>
                 <div className="p-3 md:p-4">
                   <p className="text-xs text-gray-500 mb-1">

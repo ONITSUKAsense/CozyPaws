@@ -1,5 +1,5 @@
 import { useParams, Link } from "react-router-dom";
-import { ShoppingCart, ArrowLeft, Star } from "lucide-react";
+import { ShoppingCart, ArrowLeft, Star, ImageIcon } from "lucide-react";
 import { useState, useEffect } from "react";
 import { fetchProduct } from "../api";
 import { useCartStore } from "../store/cartStore";
@@ -62,11 +62,13 @@ export default function ProductDetail() {
 
         <div className="grid md:grid-cols-2 gap-8 md:gap-12">
           <div className="aspect-square rounded-2xl overflow-hidden bg-gray-100">
-            <img
-              src={product.images[0]}
-              alt={product.name}
-              className="w-full h-full object-cover"
-            />
+            {product.images[0] ? (
+              <img src={product.images[0]} alt={product.name} className="w-full h-full object-cover" />
+            ) : (
+              <div className="w-full h-full flex items-center justify-center">
+                <ImageIcon className="w-16 h-16 text-gray-300" />
+              </div>
+            )}
           </div>
 
           <div>

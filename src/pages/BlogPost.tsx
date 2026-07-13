@@ -1,5 +1,5 @@
 import { useParams, Link } from "react-router-dom";
-import { ArrowLeft, Calendar, User } from "lucide-react";
+import { ArrowLeft, Calendar, User, ImageIcon } from "lucide-react";
 import { useState, useEffect } from "react";
 import { fetchBlogPost } from "../api";
 import { useTranslation } from "../i18n/LanguageContext";
@@ -63,11 +63,13 @@ export default function BlogPost() {
         </Link>
 
         <div className="aspect-[16/9] rounded-2xl overflow-hidden bg-gray-100 mb-8">
-          <img
-            src={post.coverImage}
-            alt={post.title}
-            className="w-full h-full object-cover"
-          />
+          {post.coverImage ? (
+            <img src={post.coverImage} alt={post.title} className="w-full h-full object-cover" />
+          ) : (
+            <div className="w-full h-full flex items-center justify-center">
+              <ImageIcon className="w-20 h-20 text-gray-300" />
+            </div>
+          )}
         </div>
 
         <div className="flex items-center gap-4 text-sm text-gray-400 mb-4">
