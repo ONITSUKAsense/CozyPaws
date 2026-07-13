@@ -15,7 +15,9 @@
 | 商品详情 | <img width="1876" height="979" alt="image" src="https://github.com/user-attachments/assets/1220eee1-efd5-438a-89e8-db2700451bef" />|
 | 购物车 |<img width="1890" height="977" alt="image" src="https://github.com/user-attachments/assets/130e0084-671b-45be-a9d3-c3cea4356a01" /> |
 | 管理后台 |<img width="1903" height="983" alt="image" src="https://github.com/user-attachments/assets/00d6fdcc-db9f-4395-b257-9259a74d1e17" />|
-
+| 商品管理 |<img width="1895" height="985" alt="image" src="https://github.com/user-attachments/assets/5123191a-623d-4e80-a4ad-2949865a278c" />|
+| 商品管理后台 |<img width="1895" height="986" alt="image" src="https://github.com/user-attachments/assets/63702dad-9879-4175-a66c-596ad84855c5" />|
+| 订单管理 |<img width="1900" height="984" alt="image" src="https://github.com/user-attachments/assets/8a16d738-6ab1-438f-a2fd-1416953c9a7f" />|
 
 ---
 
