@@ -10,13 +10,12 @@
 
 | 页面 | 截图 |
 |------|------|
-| 首页 | <!-- <img width="1901" height="982" alt="image" src="https://github.com/user-attachments/assets/ce1557af-a7a5-4fc1-b5e4-41bd18fac4f6" />-->|
+| 首页 |  <img width="1901" height="982" alt="image" src="https://github.com/user-attachments/assets/ce1557af-a7a5-4fc1-b5e4-41bd18fac4f6" />|
 | 商品列表 | <img width="1890" height="983" alt="image" src="https://github.com/user-attachments/assets/b2c31945-d325-48c2-a150-b5557c570675" />|
 | 商品详情 | <img width="1876" height="979" alt="image" src="https://github.com/user-attachments/assets/1220eee1-efd5-438a-89e8-db2700451bef" />|
-| 购物车 | <!-- 在此处添加购物车截图: ![购物车](./screenshots/cart.png) --> |
-| 管理后台 | <!-- 在此处添加后台截图: ![后台](./screenshots/admin.png) --> |
+| 购物车 |<img width="1890" height="977" alt="image" src="https://github.com/user-attachments/assets/130e0084-671b-45be-a9d3-c3cea4356a01" /> |
+| 管理后台 |<img width="1903" height="983" alt="image" src="https://github.com/user-attachments/assets/00d6fdcc-db9f-4395-b257-9259a74d1e17" />|
 
-> 提示：截图请放入 `screenshots/` 目录，然后在上面表格中替换对应的 `<!-- -->` 注释为 `![描述](./screenshots/文件名.png)` 格式。
 
 ---
 
