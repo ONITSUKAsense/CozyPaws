@@ -11,9 +11,9 @@
 | 页面 | 截图 |
 |------|------|
 | 首页 | <img width="1896" height="985" alt="image" src="https://github.com/user-attachments/assets/1b5893c9-cec1-4e0a-bbe9-847aedcae976" />|
-| 登录 |<img width="1895" height="982" alt="image" src="https://github.com/user-attachments/assets/62a477b9-58b9-483e-a479-6a9866416b55" />|
-| 注册 |<img width="1876" height="986" alt="image" src="https://github.com/user-attachments/assets/f2eba208-fd35-43ae-9ff1-daa2efa3ce66" />|
-| 商品列表 | <img width="1890" height="983" alt="image" src="https://github.com/user-attachments/assets/b2c31945-d325-48c2-a150-b5557c570675" />|
+| 登录 |<img width="1893" height="984" alt="image" src="https://github.com/user-attachments/assets/bee768fe-4004-474c-8715-f1dabb249070" />|
+| 注册 |<img width="1887" height="983" alt="image" src="https://github.com/user-attachments/assets/7c8a754c-60eb-4b41-a33a-e626d4e7b41c" />|
+| 商品列表 |<img width="1880" height="981" alt="image" src="https://github.com/user-attachments/assets/a5c5a419-5505-4b9f-8819-f03d5bacdbeb" />|
 | 商品详情 | <img width="1876" height="979" alt="image" src="https://github.com/user-attachments/assets/1220eee1-efd5-438a-89e8-db2700451bef" />|
 | 购物车 |<img width="1890" height="977" alt="image" src="https://github.com/user-attachments/assets/130e0084-671b-45be-a9d3-c3cea4356a01" /> |
 | 管理后台 |<img width="1903" height="983" alt="image" src="https://github.com/user-attachments/assets/00d6fdcc-db9f-4395-b257-9259a74d1e17" />|
