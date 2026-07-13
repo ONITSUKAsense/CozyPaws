@@ -208,16 +208,6 @@ npm run build
 cd backend && mvn clean package -DskipTests
 ```
 
-## 截图指南
-
-请将你的实际截图放入 `screenshots/` 目录，然后在顶部的"页面预览"表格中替换 `<!-- -->` 注释。
-
-推荐截图：
-1. `screenshots/home.png` — 首页效果
-2. `screenshots/shop.png` — 商品列表页
-3. `screenshots/product.png` — 商品详情页
-4. `screenshots/cart.png` — 购物车页面
-5. `screenshots/admin.png` — 后台管理面板
 
 ## 许可证
 
