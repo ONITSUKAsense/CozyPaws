@@ -10,9 +10,9 @@
 
 | 页面 | 截图 |
 |------|------|
-| 首页 | <!-- 在此处添加首页截图: ![首页](./screenshots/home.png) --> |
-| 商品列表 | <!-- 在此处添加商品列表截图: ![商品列表](./screenshots/shop.png) --> |
-| 商品详情 | <!-- 在此处添加商品详情截图: ![商品详情](./screenshots/product.png) --> |
+| 首页 | <!-- <img width="1901" height="982" alt="image" src="https://github.com/user-attachments/assets/ce1557af-a7a5-4fc1-b5e4-41bd18fac4f6" />-->|
+| 商品列表 | <img width="1890" height="983" alt="image" src="https://github.com/user-attachments/assets/b2c31945-d325-48c2-a150-b5557c570675" />|
+| 商品详情 | <img width="1876" height="979" alt="image" src="https://github.com/user-attachments/assets/1220eee1-efd5-438a-89e8-db2700451bef" />|
 | 购物车 | <!-- 在此处添加购物车截图: ![购物车](./screenshots/cart.png) --> |
 | 管理后台 | <!-- 在此处添加后台截图: ![后台](./screenshots/admin.png) --> |
 
