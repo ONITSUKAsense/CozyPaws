@@ -90,10 +90,16 @@ export default function Contact() {
             )}
           </div>
 
-          <div className="rounded-2xl overflow-hidden h-full min-h-[300px] bg-gray-200">
-            <div className="w-full h-full flex items-center justify-center text-gray-400 text-sm">
-              Map placeholder
-            </div>
+          <div className="rounded-2xl overflow-hidden h-full min-h-[300px]">
+            <iframe
+              src="https://www.openstreetmap.org/export/embed.html?bbox=-74.0060%2C40.7128%2C-73.9352%2C40.7614&amp;layer=mapnik&amp;marker=40.7484%2C-73.9857"
+              width="100%"
+              height="100%"
+              style={{ minHeight: "300px" }}
+              title="Map"
+              loading="lazy"
+              className="border-0"
+            />
           </div>
         </div>
       </div>
