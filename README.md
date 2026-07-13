@@ -102,6 +102,7 @@ cd backend
 
 mvn clean package -DskipTests
 java -jar target/cozypaws-0.0.1-SNAPSHOT.jar
+java -jar target/cozypaws-backend-0.0.1-SNAPSHOT.jar
 ```
 
 后端启动在 `http://localhost:8080`。Flyway 会在首次启动时自动执行 V1-V4 迁移脚本，完成建表和插入种子数据。
