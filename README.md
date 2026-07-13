@@ -10,7 +10,7 @@
 
 | 页面 | 截图 |
 |------|------|
-| 首页 |  <img width="1901" height="982" alt="image" src="https://github.com/user-attachments/assets/ce1557af-a7a5-4fc1-b5e4-41bd18fac4f6" />|
+| 首页 | <img width="1896" height="985" alt="image" src="https://github.com/user-attachments/assets/1b5893c9-cec1-4e0a-bbe9-847aedcae976" />|
 | 登录 |<img width="1895" height="982" alt="image" src="https://github.com/user-attachments/assets/62a477b9-58b9-483e-a479-6a9866416b55" />|
 | 注册 |<img width="1876" height="986" alt="image" src="https://github.com/user-attachments/assets/f2eba208-fd35-43ae-9ff1-daa2efa3ce66" />|
 | 商品列表 | <img width="1890" height="983" alt="image" src="https://github.com/user-attachments/assets/b2c31945-d325-48c2-a150-b5557c570675" />|
