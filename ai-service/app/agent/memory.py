@@ -1,3 +1,4 @@
+import sqlite3
 from pathlib import Path
 
 from app.config import get_settings
@@ -13,5 +14,6 @@ def get_checkpointer():
 
         s = get_settings()
         Path(s.sqlite_db).parent.mkdir(parents=True, exist_ok=True)
-        _checkpointer = SqliteSaver.from_conn_string(s.sqlite_db)
+        conn = sqlite3.connect(s.sqlite_db, check_same_thread=False)
+        _checkpointer = SqliteSaver(conn)
     return _checkpointer

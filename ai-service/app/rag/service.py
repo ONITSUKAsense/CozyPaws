@@ -63,8 +63,8 @@ class RAGService:
 
     def _ensure_agent(self):
         if self._agent is None:
-            self._agent = build_agent(with_memory=False)
-            logger.info("LangGraph agent loaded")
+            self._agent = build_agent(with_memory=True)
+            logger.info("LangGraph agent loaded (SqliteSaver memory enabled)")
         return self._agent
 
     def stream_chat(self, message: str, session_id: str | None, message_id: str | None) -> Iterator[str]:

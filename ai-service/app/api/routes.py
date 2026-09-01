@@ -38,5 +38,7 @@ def chat(req: ChatRequest):
 
 @router.delete("/sessions/{session_id}")
 async def delete_session(session_id: str):
-    # Placeholder — clears conversation memory (phase 3).
+    from app.agent.memory import get_checkpointer
+
+    get_checkpointer().delete_thread(session_id)
     return {"deleted": session_id}
