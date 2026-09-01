@@ -59,7 +59,7 @@ Nginx ── /api/* → Spring Boot (8080)
 | 1 | 基础 RAG 链 | 单轮问答 | ✅ |
 | 2 | Agent + Tool | 自主决策检索 | ✅ |
 | 3 | Memory | 多轮对话 | ✅ |
-| 4 | RAGAS 评估 | 客观指标报告 | ⏳ |
+| 4 | RAGAS 评估 | 客观指标报告 | ✅ |
 | 5 | LangSmith 追踪 | 可调试的 Trace | ⏳ |
 | 6 | Docker | 可移植容器 | ⏳ |
 | 7 | Kubernetes | 生产级部署 | ⏳ |
@@ -83,6 +83,18 @@ python scripts/reindex.py
 
 # 3. 启动服务
 uvicorn app.main:app --port 8000
+```
+
+### RAGAS 评估（阶段4）
+
+```bash
+# 生成评估数据集（从 data/products.json 构造真实商品问答对）
+python -m eval.dataset
+
+# 运行评估（DeepSeek 兼任 judge，需先配置 DEEPSEEK_API_KEY）
+python -m eval.run_eval --limit 5          # 用金标答案离线评估
+python -m eval.run_eval --live --limit 5   # 先跑真实 agent 收集回答再评估
+# 报告输出到 data/eval/metrics.json 与 metrics.md
 ```
 
 ### AI 接口
