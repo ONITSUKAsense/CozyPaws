@@ -14,6 +14,10 @@ logger = logging.getLogger(__name__)
 async def lifespan(app: FastAPI):
     settings = get_settings()
     logger.info("Starting %s", settings.app_name)
+    from app.tracing import enable_tracing
+
+    if enable_tracing():
+        logger.info("LangSmith tracing enabled (project=%s)", settings.langsmith_project)
     yield
 
 

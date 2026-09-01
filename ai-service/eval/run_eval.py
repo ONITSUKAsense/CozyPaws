@@ -83,6 +83,10 @@ def main() -> None:
     parser.add_argument("--live", action="store_true", help="collect real agent answers first")
     args = parser.parse_args()
 
+    from app.tracing import enable_tracing
+
+    enable_tracing()
+
     from app.compat import install_ragas_shims
 
     install_ragas_shims()

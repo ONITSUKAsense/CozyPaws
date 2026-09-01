@@ -60,7 +60,7 @@ Nginx ── /api/* → Spring Boot (8080)
 | 2 | Agent + Tool | 自主决策检索 | ✅ |
 | 3 | Memory | 多轮对话 | ✅ |
 | 4 | RAGAS 评估 | 客观指标报告 | ✅ |
-| 5 | LangSmith 追踪 | 可调试的 Trace | ⏳ |
+| 5 | LangSmith 追踪 | 可调试的 Trace | ✅ |
 | 6 | Docker | 可移植容器 | ⏳ |
 | 7 | Kubernetes | 生产级部署 | ⏳ |
 
