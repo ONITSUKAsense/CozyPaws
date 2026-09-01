@@ -1,0 +1,87 @@
+version: "3.8"
+
+services:
+  mysql:
+    image: mysql:8
+    container_name: cozypaws-db
+    restart: unless-stopped
+    environment:
+      MYSQL_ROOT_PASSWORD: root123
+      MYSQL_DATABASE: cozypaws
+      MYSQL_USER: cozypaws
+      MYSQL_PASSWORD: 123
+    volumes:
+      - mysql_data:/var/lib/mysql
+    healthcheck:
+      test: ["CMD", "mysqladmin", "ping", "-h", "localhost"]
+      interval: 10s
+      timeout: 5s
+      retries: 5
+
+  backend:
+    build: ./backend
+    container_name: cozypaws-backend
+    restart: unless-stopped
+    depends_on:
+      mysql:
+        condition: service_healthy
+    environment:
+      DB_URL: jdbc:mysql://mysql:3306/cozypaws?useSSL=false&allowPublicKeyRetrieval=true&serverTimezone=UTC&createDatabaseIfNotExist=true
+      DB_USERNAME: cozypaws
+      DB_PASSWORD: 123
+      JWT_SECRET: 4a6f686e446f6553656372657456657279566572795365637265744b6579466f724a57545369676e696e67
+      CORS_ORIGINS: http://localhost
+      UPLOAD_DIR: /app/uploads
+    volumes:
+      - upload_data:/app/uploads
+    ports:
+      - "8080:8080"
+
+  frontend:
+    build: .
+    container_name: cozypaws-frontend
+    restart: unless-stopped
+    depends_on:
+      - backend
+    ports:
+      - "80:80"
+
+  ai-service:
+    build: ./ai-service
+    container_name: cozypaws-ai
+    restart: unless-stopped
+    depends_on:
+      mysql:
+        condition: service_healthy
+    environment:
+      DEEPSEEK_API_KEY: ${DEEPSEEK_API_KEY:-}
+      DEEPSEEK_BASE_URL: https://api.deepseek.com
+      DEEPSEEK_MODEL: ${DEEPSEEK_MODEL:-deepseek-v4-flash}
+      EMBEDDING_MODEL: BAAI/bge-small-zh-v1.5
+      CHROMA_DIR: /data/chroma
+      CHROMA_COLLECTION: products
+      DATA_DIR: /data
+      PRODUCTS_JSON: /data/products.json
+      SQLITE_DB: /data/cozypaws_agent.db
+      BACKEND_URL: http://backend:8080
+      HF_ENDPOINT: https://hf-mirror.com
+      MYSQL_HOST: mysql
+      MYSQL_PORT: 3306
+      MYSQL_DB: cozypaws
+      MYSQL_USER: cozypaws
+      MYSQL_PASSWORD: 123
+      LANGSMITH_TRACING: ${LANGSMITH_TRACING:-false}
+      LANGSMITH_API_KEY: ${LANGSMITH_API_KEY:-}
+      LANGSMITH_PROJECT: cozypaws-ai
+      CORS_ORIGINS: http://localhost
+    volumes:
+      - ai_data:/data
+      - ai_models:/models
+    ports:
+      - "8000:8000"
+
+volumes:
+  mysql_data:
+  upload_data:
+  ai_data:
+  ai_models:

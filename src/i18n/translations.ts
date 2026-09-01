@@ -200,6 +200,17 @@ const zh = {
   "common.cancel": "取消",
   "common.save": "保存",
   "common.delete": "删除",
+
+  // Chat Assistant
+  "chat.title": "AI 购物助手",
+  "chat.welcome": "您好！我是 CozyPaws AI 助手，可以帮您推荐宠物商品、查询价格与库存。请问有什么需要？",
+  "chat.placeholder": "问点什么，例如：有哪些狗粮？",
+  "chat.send": "发送",
+  "chat.newChat": "新对话",
+  "chat.toolCall": "工具调用",
+  "chat.sources": "参考商品",
+  "chat.view": "查看",
+  "chat.online": "在线",
 };
 
 const en: Record<string, string> = {
@@ -404,6 +415,17 @@ const en: Record<string, string> = {
   "common.cancel": "Cancel",
   "common.save": "Save",
   "common.delete": "Delete",
+
+  // Chat Assistant
+  "chat.title": "AI Assistant",
+  "chat.welcome": "Hi! I'm the CozyPaws AI assistant. I can recommend pet products, check prices and stock. How can I help?",
+  "chat.placeholder": "Ask me, e.g. any dog food?",
+  "chat.send": "Send",
+  "chat.newChat": "New chat",
+  "chat.toolCall": "Tool call",
+  "chat.sources": "References",
+  "chat.view": "View",
+  "chat.online": "Online",
 };
 
 export type Language = "zh" | "en";

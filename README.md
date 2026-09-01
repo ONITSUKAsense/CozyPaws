@@ -31,6 +31,78 @@
 | **状态管理** | Zustand（localStorage 持久化） |
 | **图标** | Lucide React |
 | **API 文档** | SpringDoc OpenAPI（Swagger UI） |
+| **AI 助手** | FastAPI, LangChain 1.x, DeepSeek, 本地 BGE 向量, Chroma, LangGraph, RAGAS, LangSmith |
+
+## AI 购物助手
+
+内置一个 AI 购物助手（`ai-service/`），基于 **LangChain 1.x + FastAPI + DeepSeek + 本地 BGE 向量 + Chroma** 构建，回答基于商品库的检索增强生成（RAG）问题。按 7 阶段路线图逐步演进，前端通过右下角聊天浮窗（`src/components/chat/ChatWidget.tsx`）接入。
+
+```
+浏览器 (聊天浮窗 ChatWidget)
+   │  fetch + SSE (同源 /ai)
+   ▼
+Nginx ── /api/* → Spring Boot (8080)
+   └───  /ai/*  → ai-service (8000)
+                     ├─ RAG chain: Chroma 检索 → DeepSeek
+                     ├─ LangGraph Agent + Tools
+                     └─ SqliteSaver 会话记忆
+                     ┌──────────────┐   ┌──────────────┐
+                     │ Chroma 向量库 │   │ MySQL 商品库  │
+                     └──────────────┘   └──────────────┘
+```
+
+### 阶段进度
+
+| 阶段 | 核心知识点 | 产出物 | 状态 |
+|------|-----------|--------|------|
+| 0 | 项目初始化 | 项目骨架 | ✅ |
+| 1 | 基础 RAG 链 | 单轮问答 | ✅ |
+| 2 | Agent + Tool | 自主决策检索 | ⏳ |
+| 3 | Memory | 多轮对话 | ⏳ |
+| 4 | RAGAS 评估 | 客观指标报告 | ⏳ |
+| 5 | LangSmith 追踪 | 可调试的 Trace | ⏳ |
+| 6 | Docker | 可移植容器 | ⏳ |
+| 7 | Kubernetes | 生产级部署 | ⏳ |
+
+### AI 服务快速开始
+
+```bash
+cd ai-service
+python -m venv .venv
+# Windows: .venv\Scripts\activate     Linux/Mac: source .venv/bin/activate
+pip install -r requirements.txt
+
+# 配置（复制 .env.example 为 .env，填入 DEEPSEEK_API_KEY 与 MySQL 信息）
+cp .env.example .env
+
+# 1. 从 MySQL 导出商品快照
+python scripts/export_products.py
+
+# 2. 构建 Chroma 索引（首次会下载 BGE 模型）
+python scripts/reindex.py
+
+# 3. 启动服务
+uvicorn app.main:app --port 8000
+```
+
+### AI 接口
+
+| 接口 | 说明 |
+|------|------|
+| `GET /ai/v1/health` | 健康检查 |
+| `POST /ai/v1/chat` | 聊天（SSE 流式返回） |
+| `DELETE /ai/v1/sessions/{id}` | 清空会话记忆 |
+
+### 环境变量（ai-service）
+
+| 变量 | 说明 |
+|------|------|
+| `DEEPSEEK_API_KEY` | DeepSeek API Key |
+| `DEEPSEEK_MODEL` | 模型名（默认 `deepseek-v4-flash`） |
+| `HF_ENDPOINT` | HuggingFace 镜像（国内建议 `https://hf-mirror.com`） |
+| `MYSQL_*` | 导出脚本连接数据库 |
+| `BACKEND_URL` | Spring Boot 后端地址 |
+| `LANGSMITH_*` | LangSmith 追踪配置 |
 
 ## 功能特性
 
