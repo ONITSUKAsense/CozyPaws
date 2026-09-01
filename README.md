@@ -62,7 +62,7 @@ Nginx ── /api/* → Spring Boot (8080)
 | 4 | RAGAS 评估 | 客观指标报告 | ✅ |
 | 5 | LangSmith 追踪 | 可调试的 Trace | ✅ |
 | 6 | Docker | 可移植容器 | ✅ |
-| 7 | Kubernetes | 生产级部署 | ⏳ |
+| 7 | Kubernetes | 生产级部署 | ✅ |
 
 ### AI 服务快速开始
 
@@ -104,6 +104,17 @@ python -m eval.run_eval --live --limit 5   # 先跑真实 agent 收集回答再�
 docker compose up -d --build
 # 首次启动 ai-service 会下载 BGE 模型并重建索引；之后持久化在命名卷中
 # 前端 nginx 已为 /ai/* SSE 关闭代理缓冲（docker/nginx.conf）
+```
+
+### Kubernetes（阶段7）
+
+```bash
+# k8s/ 目录：命名空间 + ConfigMap/Secret + PVC + Deployment（init 准备数据）+ Service + Ingress
+# 1) 推送镜像：docker build -t <registry>/ai-service:latest ./ai-service && docker push ...
+# 2) 在 k8s/ai-secret.yaml 填入 DEEPSEEK_API_KEY
+# 3) 应用清单
+kubectl apply -f k8s/
+# Ingress 已为 /ai/* SSE 关闭缓冲（nginx.ingress.kubernetes.io/proxy-buffering=off）
 ```
 
 ### AI 接口

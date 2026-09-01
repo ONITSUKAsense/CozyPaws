@@ -1,0 +1,25 @@
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: cozypaws-ai-config
+  namespace: cozypaws
+data:
+  DEEPSEEK_BASE_URL: "https://api.deepseek.com"
+  DEEPSEEK_MODEL: "deepseek-v4-flash"
+  EMBEDDING_MODEL: "BAAI/bge-small-zh-v1.5"
+  MODEL_DIR: "/models"
+  CHROMA_DIR: "/data/chroma"
+  CHROMA_COLLECTION: "products"
+  DATA_DIR: "/data"
+  PRODUCTS_JSON: "/data/products.json"
+  SQLITE_DB: "/data/cozypaws_agent.db"
+  BACKEND_URL: "http://cozypaws-backend:8080"
+  HF_ENDPOINT: "https://hf-mirror.com"
+  MYSQL_HOST: "cozypaws-mysql"
+  MYSQL_PORT: "3306"
+  MYSQL_DB: "cozypaws"
+  MYSQL_USER: "cozypaws"
+  MYSQL_PASSWORD: "123"
+  LANGSMITH_TRACING: "false"
+  LANGSMITH_PROJECT: "cozypaws-ai"
+  CORS_ORIGINS: "http://localhost"

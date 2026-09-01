@@ -1,0 +1,12 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: cozypaws-ai
+  namespace: cozypaws
+spec:
+  selector:
+    app: cozypaws-ai
+  ports:
+    - name: http
+      port: 8000
+      targetPort: http

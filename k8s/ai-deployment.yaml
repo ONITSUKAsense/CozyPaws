@@ -1,0 +1,73 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: cozypaws-ai
+  namespace: cozypaws
+  labels:
+    app: cozypaws-ai
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: cozypaws-ai
+  template:
+    metadata:
+      labels:
+        app: cozypaws-ai
+    spec:
+      initContainers:
+        - name: init-data
+          image: cozypaws/ai-service:latest   # 替换为你的镜像仓库地址
+          imagePullPolicy: IfNotPresent
+          command: ["/bin/sh", "-c"]
+          args:
+            - |
+              set -e
+              for i in 1 2 3 4 5; do
+                python scripts/export_products.py && break
+                echo "export retry $i"; sleep 5
+              done
+              python - <<'PY'
+              import os
+              from huggingface_hub import snapshot_download
+              model = os.environ.get("EMBEDDING_MODEL", "BAAI/bge-small-zh-v1.5")
+              local = os.environ.get("MODEL_DIR", "/models")
+              if not os.path.isfile(os.path.join(local, "model.safetensors")):
+                  snapshot_download(repo_id=model, local_dir=local)
+              PY
+              python scripts/reindex.py
+          envFrom:
+            - configMapRef: { name: cozypaws-ai-config }
+            - secretRef: { name: cozypaws-ai-secret }
+          volumeMounts:
+            - { name: data, mountPath: /data }
+            - { name: models, mountPath: /models }
+      containers:
+        - name: ai-service
+          image: cozypaws/ai-service:latest   # 替换为你的镜像仓库地址
+          imagePullPolicy: IfNotPresent
+          command: ["uvicorn", "app.main:app", "--host", "0.0.0.0", "--port", "8000"]
+          ports:
+            - { name: http, containerPort: 8000 }
+          envFrom:
+            - configMapRef: { name: cozypaws-ai-config }
+            - secretRef: { name: cozypaws-ai-secret }
+          readinessProbe:
+            httpGet: { path: /v1/health, port: http }
+            initialDelaySeconds: 10
+            periodSeconds: 10
+          livenessProbe:
+            httpGet: { path: /v1/health, port: http }
+            initialDelaySeconds: 15
+            periodSeconds: 30
+          resources:
+            requests: { cpu: 500m, memory: 1Gi }
+            limits: { cpu: "2", memory: 2Gi }
+          volumeMounts:
+            - { name: data, mountPath: /data }
+            - { name: models, mountPath: /models }
+      volumes:
+        - name: data
+          persistentVolumeClaim: { claimName: cozypaws-ai-data }
+        - name: models
+          persistentVolumeClaim: { claimName: cozypaws-ai-models }
