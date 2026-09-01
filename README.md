@@ -61,7 +61,7 @@ Nginx ── /api/* → Spring Boot (8080)
 | 3 | Memory | 多轮对话 | ✅ |
 | 4 | RAGAS 评估 | 客观指标报告 | ✅ |
 | 5 | LangSmith 追踪 | 可调试的 Trace | ✅ |
-| 6 | Docker | 可移植容器 | ⏳ |
+| 6 | Docker | 可移植容器 | ✅ |
 | 7 | Kubernetes | 生产级部署 | ⏳ |
 
 ### AI 服务快速开始
@@ -95,6 +95,15 @@ python -m eval.dataset
 python -m eval.run_eval --limit 5          # 用金标答案离线评估
 python -m eval.run_eval --live --limit 5   # 先跑真实 agent 收集回答再评估
 # 报告输出到 data/eval/metrics.json 与 metrics.md
+```
+
+### Docker（阶段6）
+
+```bash
+# 一键起全栈（MySQL + 后端 + 前端 + AI 助手）
+docker compose up -d --build
+# 首次启动 ai-service 会下载 BGE 模型并重建索引；之后持久化在命名卷中
+# 前端 nginx 已为 /ai/* SSE 关闭代理缓冲（docker/nginx.conf）
 ```
 
 ### AI 接口
